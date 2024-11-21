@@ -1,6 +1,7 @@
 import React from "react";
 import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
 import { RiCodeLine } from "react-icons/ri";
+import { Link } from "react-router-dom"; // Import Link from react-router-dom
 
 const Footer: React.FC = () => {
   return (
@@ -22,12 +23,16 @@ const Footer: React.FC = () => {
               <h2 className="text-yellow-400 font-semibold mb-2">Resources</h2>
               <ul>
                 <li className="hover:text-yellow-300">
-                  <a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener noreferrer">
+                  <a
+                    href="https://opensource.org/licenses/MIT"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     MIT License
                   </a>
                 </li>
                 <li className="hover:text-yellow-300">
-                  <a href="/privacy-policy">Privacy Policy</a>
+                  <Link to="/privacy-policy">Privacy Policy</Link> {/* Using Link Component */}
                 </li>
               </ul>
             </div>
