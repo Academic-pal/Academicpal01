@@ -6,3 +6,17 @@
 .font-poppins {
   font-family: 'Poppins', sans-serif;
 }
+/* In your global CSS or App.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+/* src/App.css or src/index.css */
+body {
+  font-family: 'Poppins', sans-serif; /* Default font for the body */
+}
+
+h1, h2, h3 {
+  font-family: 'Playfair Display', serif; /* A stylish font for headings */
+}
+
+button {
+  font-family: 'Poppins', sans-serif; /* Buttons using Poppins font */
+}

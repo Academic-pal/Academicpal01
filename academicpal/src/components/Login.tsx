@@ -58,7 +58,7 @@ const Login = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-black text-white p-6">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-black text-white p-6" style={{ fontFamily: "'Poppins', sans-serif" }}>
       {/* Typewriter Effect */}
       <div className="text-center mb-6">
         <h1 className="text-4xl font-bold">
