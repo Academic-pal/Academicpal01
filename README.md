@@ -59,6 +59,8 @@ For any queries, suggestions, or collaborations, feel free to reach out:
 
 ## 🛠️ **Technology & Tech Stack** 🚀
 
+![AcademicPal Banner](techstack.png) 
+
 AcademicPal is built using a modern stack to provide an intuitive, fast, and interactive user experience. Here's the tech that powers it:
 
 ### **Frontend** 💻
