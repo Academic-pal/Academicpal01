@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { auth } from "../firebase"; // Ensure your firebase is correctly configured
 import { FaGoogle, FaEnvelope, FaLock } from "react-icons/fa"; // Add icons for the email and password fields
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const [email, setEmail] = useState<string>("");
@@ -95,9 +96,9 @@ const Login = () => {
 
       {/* Switch to sign-up */}
       <div className="mt-4 text-center">
-        <p className="text-white">
-          Don't have an account?{" "}
-          <a href="/signup" className="text-yellow-500 font-semibold hover:underline">Sign Up</a>
+      <p className="text-white">
+          Dont have account?{" "}
+          <Link to="/signup" className="text-yellow-500 font-semibold hover:underline">Login</Link>
         </p>
       </div>
     </div>
