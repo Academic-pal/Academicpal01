@@ -1,6 +1,6 @@
 # AcademicPal 📚  
 
-![AcademicPal Banner](https://your-image-link.com/banner-image.png)  
+![AcademicPal Banner](banner.png)  
 *(Replace the link with your banner image URL)*  
 
 Welcome to **AcademicPal**, your ultimate learning companion designed for college students. From comprehensive notes to detailed syllabi and question banks, AcademicPal empowers you with everything you need for academic success!
