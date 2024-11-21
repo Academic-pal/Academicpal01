@@ -27,15 +27,30 @@ const Login = () => {
     }
   };
 
+  // Validate email
+  const isValidEmail = (email: string) => {
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@nmamit\.in$/;
+    return emailRegex.test(email);
+  };
+
   // Handle login with email and password
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!isValidEmail(email)) {
+      setError("please enter NMAMIT email");
+      return;
+    }
+
     try {
       await signInWithEmailAndPassword(auth, email, password);
       window.location.href = "https://academicpal.vercel.app/"; // Redirect to external website after successful login
     } catch (error: unknown) {
       if (error instanceof Error) {
-        setError(error.message); // Handle login errors
+        if (error.message.includes("wrong-password") || error.message.includes("user-not-found")) {
+          setError("Incorrect credentials. Please sign up if you don't have an account.");
+        } else {
+          setError(error.message); // Handle other login errors
+        }
       } else {
         setError("An unknown error occurred");
       }
@@ -98,24 +113,22 @@ const Login = () => {
 
         {/* Login Button */}
         <button
-  type="submit"
-  className="bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 text-white p-3 rounded-lg text-base sm:text-lg md:text-xl font-semibold mt-4 w-full sm:w-auto hover:from-purple-400 hover:to-red-400 shadow-lg hover:shadow-xl transition-transform transform hover:scale-105"
->
-  Login
-</button>
-
+          type="submit"
+          className="bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 text-white p-3 rounded-lg text-base sm:text-lg md:text-xl font-semibold mt-4 w-full sm:w-auto hover:from-purple-400 hover:to-red-400 shadow-lg hover:shadow-xl transition-transform transform hover:scale-105"
+        >
+          Login
+        </button>
       </form>
 
       {/* Google login button */}
       <div className="mt-4 w-full flex justify-center">
-      <button
-  onClick={handleGoogleSignIn}
-  className="flex items-center gap-2 bg-gradient-to-r from-red-500 to-yellow-500 text-white py-3 px-6 rounded-lg text-base sm:text-lg md:text-xl font-semibold hover:from-red-400 hover:to-yellow-400 shadow-md hover:shadow-lg transform hover:scale-105 transition-all duration-300 ease-in-out"
->
-  <FaGoogle className="text-xl sm:text-2xl" />
-  <span className="text-base sm:text-lg font-semibold">Sign in with Google</span>
-</button>
-
+        <button
+          onClick={handleGoogleSignIn}
+          className="flex items-center gap-2 bg-gradient-to-r from-red-500 to-yellow-500 text-white py-3 px-6 rounded-lg text-base sm:text-lg md:text-xl font-semibold hover:from-red-400 hover:to-yellow-400 shadow-md hover:shadow-lg transform hover:scale-105 transition-all duration-300 ease-in-out"
+        >
+          <FaGoogle className="text-xl sm:text-2xl" />
+          <span className="text-base sm:text-lg font-semibold">Sign in with Google</span>
+        </button>
       </div>
 
       {/* Switch to sign-up */}
