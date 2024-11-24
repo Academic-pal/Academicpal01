@@ -37,7 +37,7 @@ const Login = () => {
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!isValidEmail(email)) {
-      setError("please enter NMAMIT email");
+      setError("Please enter NMAMIT email");
       return;
     }
 
@@ -61,7 +61,7 @@ const Login = () => {
     <div className="flex flex-col items-center justify-center min-h-screen bg-black text-white p-6" style={{ fontFamily: "'Poppins', sans-serif" }}>
       {/* Typewriter Effect */}
       <div className="text-center mb-6">
-        <h1 className="text-4xl font-bold">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl  font-bold">
           Welcome to{" "}
           <span className="text-yellow-400">
             <Typewriter
@@ -75,7 +75,7 @@ const Login = () => {
             />
           </span>
         </h1>
-        <p className="mt-2 text-lg text-gray-400">
+        <p className="mt-2 text-sm sm:text-base md:text-lg text-gray-400">
           Sign in to explore personalized resources and tools for your academic journey.
         </p>
       </div>
@@ -90,7 +90,7 @@ const Login = () => {
             placeholder="Enter your email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full bg-gray-800 text-white border-none outline-none"
+            className="w-full bg-gray-800 text-white border-none outline-none text-sm sm:text-base md:text-lg"
             required
           />
         </div>
@@ -103,18 +103,18 @@ const Login = () => {
             placeholder="Enter your password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="w-full bg-gray-800 text-white border-none outline-none"
+            className="w-full bg-gray-800 text-white border-none outline-none text-sm sm:text-base md:text-lg"
             required
           />
         </div>
 
         {/* Error Message */}
-        {error && <p className="text-red-500 text-center mb-4">{error}</p>}
+        {error && <p className="text-red-500 text-center text-sm sm:text-base md:text-lg mb-4">{error}</p>}
 
         {/* Login Button */}
         <button
           type="submit"
-          className="bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 text-white p-3 rounded-lg text-base sm:text-lg md:text-xl font-semibold mt-4 w-full sm:w-auto hover:from-purple-400 hover:to-red-400 shadow-lg hover:shadow-xl transition-transform transform hover:scale-105"
+          className="bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 text-white p-3 rounded-lg text-sm sm:text-base md:text-lg font-semibold mt-4 w-full sm:w-auto hover:from-purple-400 hover:to-red-400 shadow-lg hover:shadow-xl transition-transform transform hover:scale-105"
         >
           Login
         </button>
@@ -124,16 +124,16 @@ const Login = () => {
       <div className="mt-4 w-full flex justify-center">
         <button
           onClick={handleGoogleSignIn}
-          className="flex items-center gap-2 bg-gradient-to-r from-red-500 to-yellow-500 text-white py-3 px-6 rounded-lg text-base sm:text-lg md:text-xl font-semibold hover:from-red-400 hover:to-yellow-400 shadow-md hover:shadow-lg transform hover:scale-105 transition-all duration-300 ease-in-out"
+          className="flex items-center gap-2 bg-gradient-to-r from-red-500 to-yellow-500 text-white py-3 px-6 rounded-lg text-sm sm:text-base md:text-lg font-semibold hover:from-red-400 hover:to-yellow-400 shadow-md hover:shadow-lg transform hover:scale-105 transition-all duration-300 ease-in-out"
         >
-          <FaGoogle className="text-xl sm:text-2xl" />
-          <span className="text-base sm:text-lg font-semibold">Sign in with Google</span>
+          <FaGoogle className="text-lg sm:text-xl md:text-2xl" />
+          <span className="text-sm sm:text-base md:text-lg font-semibold">Sign in with Google</span>
         </button>
       </div>
 
       {/* Switch to sign-up */}
       <div className="mt-4 text-center">
-        <p className="text-white">
+        <p className="text-white text-sm sm:text-base md:text-lg">
           Don't have an account?{" "}
           <Link to="/signup" className="text-yellow-500 font-semibold hover:underline">
             Sign up

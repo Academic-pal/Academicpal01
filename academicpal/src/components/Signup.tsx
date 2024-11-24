@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-import { auth } from "../firebase"; // Ensure your Firebase configuration is correct
+import { auth } from "../firebase";
 import { FaGoogle, FaUser, FaEnvelope, FaLock } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { Typewriter } from "react-simple-typewriter";
@@ -18,7 +18,7 @@ const SignUp = () => {
       const result = await signInWithPopup(auth, provider);
       const user = result.user;
       console.log("Google User:", user);
-      window.location.href = "https://academicpal.vercel.app/"; // Redirect after successful Google login
+      window.location.href = "https://academicpal.vercel.app/";
     } catch (error: unknown) {
       if (error instanceof Error) {
         setError(error.message);
@@ -31,7 +31,6 @@ const SignUp = () => {
   const handleSignUp = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Email validation
     const emailRegex = /^[a-zA-Z0-9._%+-]+@nmamit\.in$/;
     if (!emailRegex.test(email)) {
       setError("Please enter a valid email ending with @nmamit.in");
@@ -40,7 +39,7 @@ const SignUp = () => {
 
     try {
       await createUserWithEmailAndPassword(auth, email, password);
-      window.location.href = "https://academicpal.vercel.app/"; // Redirect after successful sign-up
+      window.location.href = "https://academicpal.vercel.app/";
     } catch (error: unknown) {
       if (error instanceof Error) {
         setError(error.message);
@@ -54,7 +53,7 @@ const SignUp = () => {
     <div className="flex flex-col items-center justify-center min-h-screen bg-black text-white p-6">
       {/* Typewriter Effect */}
       <div className="text-center mb-6">
-        <h1 className="text-4xl font-bold">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl  font-bold">
           Join{" "}
           <span className="text-yellow-400">
             <Typewriter
@@ -68,15 +67,14 @@ const SignUp = () => {
             />
           </span>
         </h1>
-        <p className="mt-2 text-lg text-gray-400">
+        <p className="mt-2 text-base sm:text-lg md:text-xl text-gray-400">
           Sign up to access personalized academic tools and resources.
         </p>
       </div>
 
       {/* Sign-Up Form */}
       <form onSubmit={handleSignUp} className="w-full sm:w-3/4 md:w-1/3 lg:w-1/4 flex flex-col gap-4">
-        {/* Name Input */}
-        <label htmlFor="name" className="text-sm font-semibold mb-1">
+        <label htmlFor="name" className="text-sm sm:text-base font-semibold">
           Full Name:
         </label>
         <div className="flex items-center bg-gray-800 p-3 rounded-md">
@@ -87,13 +85,13 @@ const SignUp = () => {
             placeholder="Enter your full name"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="w-full bg-gray-800 text-white border-none outline-none"
+            className="w-full bg-gray-800 text-white border-none outline-none text-sm sm:text-base"
             required
           />
         </div>
 
         {/* USN Input */}
-        <label htmlFor="usn" className="text-sm font-semibold mb-1">
+        <label htmlFor="usn" className="text-sm sm:text-base font-semibold">
           USN:
         </label>
         <div className="flex items-center bg-gray-800 p-3 rounded-md">
@@ -104,13 +102,13 @@ const SignUp = () => {
             placeholder="Enter your USN"
             value={usn}
             onChange={(e) => setUsn(e.target.value)}
-            className="w-full bg-gray-800 text-white border-none outline-none"
+            className="w-full bg-gray-800 text-white border-none outline-none text-sm sm:text-base"
             required
           />
         </div>
 
         {/* Email Input */}
-        <label htmlFor="email" className="text-sm font-semibold mb-1">
+        <label htmlFor="email" className="text-sm sm:text-base font-semibold">
           Email Address:
         </label>
         <div className="flex items-center bg-gray-800 p-3 rounded-md">
@@ -121,13 +119,13 @@ const SignUp = () => {
             placeholder="Enter your email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full bg-gray-800 text-white border-none outline-none"
+            className="w-full bg-gray-800 text-white border-none outline-none text-sm sm:text-base"
             required
           />
         </div>
 
         {/* Password Input */}
-        <label htmlFor="password" className="text-sm font-semibold mb-1">
+        <label htmlFor="password" className="text-sm sm:text-base font-semibold">
           Password:
         </label>
         <div className="flex items-center bg-gray-800 p-3 rounded-md">
@@ -138,24 +136,25 @@ const SignUp = () => {
             placeholder="Enter your password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="w-full bg-gray-800 text-white border-none outline-none"
+            className="w-full bg-gray-800 text-white border-none outline-none text-sm sm:text-base"
             required
           />
         </div>
 
         {/* Error Message */}
-        {error && <p className="text-red-500 text-center">{error}</p>}
+        {error && <p className="text-red-500 text-center text-sm sm:text-base">{error}</p>}
 
-        {/* Sign-Up Button */}
         <button
           type="submit"
-          className="bg-gradient-to-r from-green-400 via-blue-500 to-purple-500 text-white p-3 rounded-lg text-base sm:text-lg md:text-xl font-semibold mt-4 w-full hover:from-green-300 hover:to-purple-400 shadow-lg hover:shadow-xl transition-transform transform hover:scale-105"
+          className="bg-gradient-to-r from-green-400 via-blue-500 to-purple-500 text-white p-3 rounded-lg text-sm sm:text-base font-semibold hover:from-green-300 hover:to-purple-400 shadow-lg hover:shadow-xl transform hover:scale-105"
         >
           Sign Up
         </button>
       </form>
 
-      {/* Google Sign-Up Button */}
+      <div className="mt-4 text-sm sm:text-base text-center">
+
+         {/* Google Sign-Up Button */}
       <div className="mt-4 w-full flex justify-center">
         <button
           onClick={handleGoogleSignUp}
@@ -167,7 +166,7 @@ const SignUp = () => {
       </div>
 
       {/* Switch to Login */}
-      <div className="mt-4 text-center">
+      <div className="mt-4 text-center"></div>
         <p>
           Already have an account?{" "}
           <Link to="/login" className="text-yellow-500 font-semibold hover:underline">
