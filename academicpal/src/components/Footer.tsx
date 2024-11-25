@@ -63,7 +63,7 @@ const Footer: React.FC = () => {
               <FaGithub className="w-7 h-7" />
             </a>
             <a
-              href="https://www.linkedin.com/in/hari-hara-nath-a13583282/"
+              href="https://www.linkedin.com/company/academic-pal/?viewAsMember=true"
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-300 hover:text-yellow-400 transition-all"
