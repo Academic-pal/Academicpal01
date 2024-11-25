@@ -54,7 +54,7 @@ const Footer: React.FC = () => {
           {/* Social Links */}
           <div className="flex items-center gap-8">
             <a
-              href="https://github.com/Hari-hara7"
+              href="https://github.com/Academic-pal"
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-300 hover:text-yellow-400 transition-all"
