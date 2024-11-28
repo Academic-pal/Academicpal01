@@ -1,15 +1,15 @@
 import React from "react";
 import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
 import { RiCodeLine } from "react-icons/ri";
-import { Link } from "react-router-dom"; // Import Link from react-router-dom
+import { Link } from "react-router-dom"; 
 
 const Footer: React.FC = () => {
   return (
     <footer className="bg-gradient-to-r from-gray-800 via-black to-gray-900 text-white py-10">
       <div className="container mx-auto px-6 font-sans">
-        {/* Top Section */}
+      
         <div className="flex flex-col md:flex-row justify-between items-center gap-10">
-          {/* Branding */}
+         
           <div className="flex flex-col items-center md:items-start">
             <h1 className="text-4xl font-extrabold text-yellow-400 font-poppins">Academic Pal</h1>
             <p className="mt-2 text-gray-400 text-center md:text-left font-light">
@@ -17,7 +17,7 @@ const Footer: React.FC = () => {
             </p>
           </div>
 
-          {/* Quick Links */}
+    
           <div className="grid grid-cols-2 gap-6 text-sm text-gray-400">
             <div>
               <h2 className="text-yellow-400 font-semibold mb-2">Resources</h2>
@@ -32,7 +32,7 @@ const Footer: React.FC = () => {
                   </a>
                 </li>
                 <li className="hover:text-yellow-300">
-                  <Link to="/privacy-policy">Privacy Policy</Link> {/* Using Link Component */}
+                  <Link to="/privacy-policy">Privacy Policy</Link> 
                 </li>
               </ul>
             </div>
@@ -51,7 +51,7 @@ const Footer: React.FC = () => {
             </div>
           </div>
 
-          {/* Social Links */}
+         
           <div className="flex items-center gap-8">
             <a
               href="https://github.com/Academic-pal"
@@ -81,7 +81,7 @@ const Footer: React.FC = () => {
           </div>
         </div>
 
-        {/* Divider */}
+      
         <hr className="my-8 border-gray-700" />
 
         {/* Bottom Section */}
