@@ -1,40 +1,40 @@
 import React, { useState } from "react";
-import { auth } from "../firebase"; // Firebase configuration
+import { auth } from "../firebase"; 
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 
 const Signup: React.FC = () => {
-  // State hooks for form fields
+  
   const [name, setName] = useState<string>("");
   const [usn, setUsn] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [error, setError] = useState<string | null>(null);
 
-  // Navigation hook
+  
   const navigate = useNavigate();
 
-  // Helper function to validate the USN format
+ 
   const validateUsn = (usn: string): boolean =>
     /^NNM2[34][A-Z]{2}[0-9]{3}$/.test(usn);
 
-  // Signup handler
+
   const handleSignup = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError(null); // Clear previous errors
+    setError(null); 
 
-    // Validate USN format
+    
     if (!validateUsn(usn)) {
       setError("Invalid USN format. Please follow university guidelines.");
       return;
     }
 
     try {
-      // Firebase signup
+      
       await createUserWithEmailAndPassword(auth, email, password);
-      navigate("/dashboard"); // Redirect to dashboard upon success
+      navigate("/dashboard");
     } catch (err: any) {
-      // Handle Firebase errors
+    
       if (err.code === "auth/email-already-in-use") {
         setError("This email is already in use.");
       } else if (err.code === "auth/invalid-email") {
@@ -53,7 +53,7 @@ const Signup: React.FC = () => {
         <h2 className="text-2xl font-bold mb-6">Signup for Academic Pal</h2>
         {error && <p className="text-red-500 mb-4">{error}</p>}
         <form onSubmit={handleSignup}>
-          {/* Full Name Input */}
+          
           <input
             type="text"
             placeholder="Full Name"
@@ -63,7 +63,7 @@ const Signup: React.FC = () => {
             required
           />
 
-          {/* USN Input */}
+        
           <input
             type="text"
             placeholder="University USN"
@@ -73,7 +73,7 @@ const Signup: React.FC = () => {
             required
           />
 
-          {/* Email Input */}
+         
           <input
             type="email"
             placeholder="Email"
@@ -83,7 +83,7 @@ const Signup: React.FC = () => {
             required
           />
 
-          {/* Password Input */}
+         
           <input
             type="password"
             placeholder="Password"
@@ -93,7 +93,7 @@ const Signup: React.FC = () => {
             required
           />
 
-          {/* Signup Button */}
+         
           <button
             type="submit"
             className="w-full bg-yellow-500 hover:bg-yellow-600 p-3 rounded font-bold"
