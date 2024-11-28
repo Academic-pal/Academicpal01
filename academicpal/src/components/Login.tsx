@@ -1,39 +1,39 @@
 import React, { useState } from "react";
 import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-import { auth } from "../firebase"; // Ensure your firebase is correctly configured
+import { auth } from "../firebase"; 
 import { FaGoogle, FaEnvelope, FaLock } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { Typewriter } from "react-simple-typewriter"; // Typewriter effect package
+import { Typewriter } from "react-simple-typewriter"; 
 
 const Login = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [error, setError] = useState<string | null>(null);
 
-  // Handle Google sign-in
+  
   const handleGoogleSignIn = async () => {
     const provider = new GoogleAuthProvider();
     try {
       const result = await signInWithPopup(auth, provider);
       const user = result.user;
-      console.log("Google User:", user); // You can use user info here if needed
-      window.location.href = "https://academicpal.vercel.app/"; // Redirect to your main website after Google login
+      console.log("Google User:", user);
+      window.location.href = "https://academicpal.vercel.app/"; 
     } catch (error: unknown) {
       if (error instanceof Error) {
-        setError(error.message); // Handle Google sign-in errors
+        setError(error.message);
       } else {
         setError("An unknown error occurred");
       }
     }
   };
 
-  // Validate email
+
   const isValidEmail = (email: string) => {
     const emailRegex = /^[a-zA-Z0-9._%+-]+@nmamit\.in$/;
     return emailRegex.test(email);
   };
 
-  // Handle login with email and password
+  
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!isValidEmail(email)) {
@@ -43,13 +43,13 @@ const Login = () => {
 
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      window.location.href = "https://academicpal.vercel.app/"; // Redirect to external website after successful login
+      window.location.href = "https://academicpal.vercel.app/"; 
     } catch (error: unknown) {
       if (error instanceof Error) {
         if (error.message.includes("wrong-password") || error.message.includes("user-not-found")) {
           setError("Incorrect credentials. Please sign up if you don't have an account.");
         } else {
-          setError(error.message); // Handle other login errors
+          setError(error.message); 
         }
       } else {
         setError("An unknown error occurred");
@@ -59,14 +59,14 @@ const Login = () => {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-black text-white p-6" style={{ fontFamily: "'Poppins', sans-serif" }}>
-      {/* Typewriter Effect */}
+      
       <div className="text-center mb-6">
         <h1 className="text-3xl sm:text-4xl md:text-5xl  font-bold">
           Welcome to{" "}
           <span className="text-yellow-400">
             <Typewriter
               words={["Academic Pal", "Your Learning Companion", "A Smarter Future"]}
-              loop={0} // Infinite looping
+              loop={0} 
               cursor
               cursorStyle="|"
               typeSpeed={80}
@@ -80,9 +80,9 @@ const Login = () => {
         </p>
       </div>
 
-      {/* Login Form */}
+      
       <form onSubmit={handleLogin} className="w-full sm:w-3/4 md:w-1/3 lg:w-1/4 flex flex-col gap-4">
-        {/* Email Input */}
+       
         <div className="flex items-center bg-gray-800 p-3 rounded-md mb-4">
           <FaEnvelope className="text-white mr-3" />
           <input
@@ -95,7 +95,7 @@ const Login = () => {
           />
         </div>
 
-        {/* Password Input */}
+      
         <div className="flex items-center bg-gray-800 p-3 rounded-md mb-4">
           <FaLock className="text-white mr-3" />
           <input
@@ -108,10 +108,10 @@ const Login = () => {
           />
         </div>
 
-        {/* Error Message */}
+      
         {error && <p className="text-red-500 text-center text-sm sm:text-base md:text-lg mb-4">{error}</p>}
 
-        {/* Login Button */}
+        
         <button
           type="submit"
           className="bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 text-white p-3 rounded-lg text-sm sm:text-base md:text-lg font-semibold mt-4 w-full sm:w-auto hover:from-purple-400 hover:to-red-400 shadow-lg hover:shadow-xl transition-transform transform hover:scale-105"
@@ -120,7 +120,7 @@ const Login = () => {
         </button>
       </form>
 
-      {/* Google login button */}
+     
       <div className="mt-4 w-full flex justify-center">
         <button
           onClick={handleGoogleSignIn}
@@ -131,7 +131,7 @@ const Login = () => {
         </button>
       </div>
 
-      {/* Switch to sign-up */}
+     
       <div className="mt-4 text-center">
         <p className="text-white text-sm sm:text-base md:text-lg">
           Don't have an account?{" "}
