@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "../assets/academicpal.jpg"; // Adjust the path according to your folder structure
+import logo from "../assets/academicpal.jpg"; 
 
 const Header: React.FC = () => {
   return (
