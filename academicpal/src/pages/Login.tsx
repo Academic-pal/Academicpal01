@@ -11,7 +11,7 @@ const Login: React.FC = () => {
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError(null); // Clear previous errors
+    setError(null); 
     try {
       await signInWithEmailAndPassword(auth, email, password);
       navigate("/dashboard");
@@ -25,7 +25,7 @@ const Login: React.FC = () => {
   };
 
   const handleGoogleSignIn = async () => {
-    setError(null); // Clear previous errors
+    setError(null); 
     try {
       await signInWithPopup(auth, googleProvider);
       navigate("/dashboard");
