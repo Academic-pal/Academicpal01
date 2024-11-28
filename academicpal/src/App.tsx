@@ -1,16 +1,16 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import SignUp from "./components/Signup"; // Import your SignUp component
-import Login from "./components/Login";   // Import your Login component
-import Header from "./components/Header"; // Import your Header component
-import Footer from "./components/Footer"; // Import your Footer component
+import SignUp from "./components/Signup"; 
+import Login from "./components/Login";   
+import Header from "./components/Header"; 
+import Footer from "./components/Footer"; 
 import PrivacyPolicy from "./components/PrivacyPolicy";
 
 const App = () => {
   return (
     <Router>
       <div className="min-h-screen bg-gray-900 text-white">
-        <Header /> {/* Header component included */}
+        <Header /> 
 
         <Routes>
           <Route path="/" element={<Login />} />
@@ -19,7 +19,7 @@ const App = () => {
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         </Routes>
 
-        <Footer /> {/* Footer component included */}
+        <Footer />
       </div>
     </Router>
   );
