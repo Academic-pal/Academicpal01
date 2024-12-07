@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, GithubAuthProvider } from "firebase/auth";
 import { auth } from "../firebase"; 
-import { FaGoogle, FaEnvelope, FaLock,FaBookOpen, FaGraduationCap, FaLightbulb } from "react-icons/fa";
+import { FaGoogle, FaGithub, FaEnvelope, FaLock, FaLightbulb } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { Typewriter } from "react-simple-typewriter"; 
 
@@ -10,6 +10,7 @@ const Login = () => {
   const [password, setPassword] = useState<string>("");
   const [error, setError] = useState<string | null>(null);
 
+  // Google Sign-In handler
   const handleGoogleSignIn = async () => {
     const provider = new GoogleAuthProvider();
     try {
@@ -26,11 +27,30 @@ const Login = () => {
     }
   };
 
+  // GitHub Sign-In handler
+  const handleGithubSignIn = async () => {
+    const provider = new GithubAuthProvider();
+    try {
+      const result = await signInWithPopup(auth, provider);
+      const user = result.user;
+      console.log("GitHub User:", user);
+      window.location.href = "https://academicpal.vercel.app/"; 
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        setError(error.message);
+      } else {
+        setError("An unknown error occurred");
+      }
+    }
+  };
+
+  // Email validation
   const isValidEmail = (email: string) => {
     const emailRegex = /^[a-zA-Z0-9._%+-]+@nmamit\.in$/;
     return emailRegex.test(email);
   };
 
+  // Login handler
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!isValidEmail(email)) {
@@ -62,11 +82,7 @@ const Login = () => {
           Welcome to{" "}
           <span className="text-yellow-400">
             <Typewriter
-              words={[
-                "📖 Academic Pal", 
-                "🎓 Your Learning Companion", 
-                "💡 A Smarter Future"
-              ]}
+              words={["📖 Academic Pal", "🎓 Your Learning Companion", "💡 A Smarter Future"]}
               loop={0} 
               cursor
               cursorStyle="|"
@@ -123,6 +139,17 @@ const Login = () => {
         >
           <FaGoogle className="text-lg sm:text-xl md:text-2xl" />
           <span className="text-sm sm:text-base md:text-lg font-semibold">Sign in with Google</span>
+        </button>
+      </div>
+
+      {/* GitHub Login Button */}
+      <div className="mt-4 w-full flex justify-center">
+        <button
+          onClick={handleGithubSignIn}
+          className="flex items-center gap-2 bg-gradient-to-r from-gray-700 to-gray-900 text-white py-3 px-6 rounded-lg text-sm sm:text-base md:text-lg font-semibold hover:from-gray-600 hover:to-gray-800 shadow-md hover:shadow-lg transform hover:scale-105 transition-all duration-300 ease-in-out"
+        >
+          <FaGithub className="text-lg sm:text-xl md:text-2xl" />
+          <span className="text-sm sm:text-base md:text-lg font-semibold">Sign in with GitHub</span>
         </button>
       </div>
 
