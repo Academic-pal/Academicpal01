@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { auth } from "../firebase"; 
-import { FaGoogle, FaEnvelope, FaLock } from "react-icons/fa";
+import { FaGoogle, FaEnvelope, FaLock,FaBookOpen, FaGraduationCap, FaLightbulb } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { Typewriter } from "react-simple-typewriter"; 
 
@@ -10,7 +10,6 @@ const Login = () => {
   const [password, setPassword] = useState<string>("");
   const [error, setError] = useState<string | null>(null);
 
-  
   const handleGoogleSignIn = async () => {
     const provider = new GoogleAuthProvider();
     try {
@@ -27,13 +26,11 @@ const Login = () => {
     }
   };
 
-
   const isValidEmail = (email: string) => {
     const emailRegex = /^[a-zA-Z0-9._%+-]+@nmamit\.in$/;
     return emailRegex.test(email);
   };
 
-  
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!isValidEmail(email)) {
@@ -61,11 +58,15 @@ const Login = () => {
     <div className="flex flex-col items-center justify-center min-h-screen bg-black text-white p-6" style={{ fontFamily: "'Poppins', sans-serif" }}>
       
       <div className="text-center mb-6">
-        <h1 className="text-3xl sm:text-4xl md:text-5xl  font-bold">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold">
           Welcome to{" "}
           <span className="text-yellow-400">
             <Typewriter
-              words={["Academic Pal", "Your Learning Companion", "A Smarter Future"]}
+              words={[
+                "📖 Academic Pal", 
+                "🎓 Your Learning Companion", 
+                "💡 A Smarter Future"
+              ]}
               loop={0} 
               cursor
               cursorStyle="|"
@@ -80,9 +81,7 @@ const Login = () => {
         </p>
       </div>
 
-      
       <form onSubmit={handleLogin} className="w-full sm:w-3/4 md:w-1/3 lg:w-1/4 flex flex-col gap-4">
-       
         <div className="flex items-center bg-gray-800 p-3 rounded-md mb-4">
           <FaEnvelope className="text-white mr-3" />
           <input
@@ -95,7 +94,6 @@ const Login = () => {
           />
         </div>
 
-      
         <div className="flex items-center bg-gray-800 p-3 rounded-md mb-4">
           <FaLock className="text-white mr-3" />
           <input
@@ -108,10 +106,8 @@ const Login = () => {
           />
         </div>
 
-      
         {error && <p className="text-red-500 text-center text-sm sm:text-base md:text-lg mb-4">{error}</p>}
 
-        
         <button
           type="submit"
           className="bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 text-white p-3 rounded-lg text-sm sm:text-base md:text-lg font-semibold mt-4 w-full sm:w-auto hover:from-purple-400 hover:to-red-400 shadow-lg hover:shadow-xl transition-transform transform hover:scale-105"
@@ -120,7 +116,6 @@ const Login = () => {
         </button>
       </form>
 
-     
       <div className="mt-4 w-full flex justify-center">
         <button
           onClick={handleGoogleSignIn}
@@ -131,7 +126,6 @@ const Login = () => {
         </button>
       </div>
 
-     
       <div className="mt-4 text-center">
         <p className="text-white text-sm sm:text-base md:text-lg">
           Don't have an account?{" "}
