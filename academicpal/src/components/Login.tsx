@@ -1,14 +1,21 @@
 import React, { useState } from "react";
-import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, GithubAuthProvider } from "firebase/auth";
-import { auth } from "../firebase"; 
-import { FaGoogle, FaGithub, FaEnvelope, FaLock, FaLightbulb } from "react-icons/fa";
+import {
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  GoogleAuthProvider,
+  GithubAuthProvider,
+  sendPasswordResetEmail,
+} from "firebase/auth";
+import { auth } from "../firebase";
+import { FaGoogle, FaGithub, FaEnvelope, FaLock } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { Typewriter } from "react-simple-typewriter"; 
+import { Typewriter } from "react-simple-typewriter";
 
 const Login = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [error, setError] = useState<string | null>(null);
+  const [message, setMessage] = useState<string | null>(null);
 
   // Google Sign-In handler
   const handleGoogleSignIn = async () => {
@@ -17,7 +24,7 @@ const Login = () => {
       const result = await signInWithPopup(auth, provider);
       const user = result.user;
       console.log("Google User:", user);
-      window.location.href = "https://academicpal.vercel.app/"; 
+      window.location.href = "https://academicpal.vercel.app/";
     } catch (error: unknown) {
       if (error instanceof Error) {
         setError(error.message);
@@ -34,7 +41,7 @@ const Login = () => {
       const result = await signInWithPopup(auth, provider);
       const user = result.user;
       console.log("GitHub User:", user);
-      window.location.href = "https://academicpal.vercel.app/"; 
+      window.location.href = "https://academicpal.vercel.app/";
     } catch (error: unknown) {
       if (error instanceof Error) {
         setError(error.message);
@@ -50,6 +57,26 @@ const Login = () => {
     return emailRegex.test(email);
   };
 
+  // Forgot Password handler
+  const handleForgotPassword = async () => {
+    if (!isValidEmail(email)) {
+      setError("Please enter a valid NMAMIT email.");
+      return;
+    }
+
+    try {
+      await sendPasswordResetEmail(auth, email);
+      setMessage("Password reset email sent. Check your inbox.");
+      setError(null); // Clear previous error
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        setError("Failed to send password reset email. Please try again.");
+      } else {
+        setError("An unknown error occurred.");
+      }
+    }
+  };
+
   // Login handler
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -60,13 +87,13 @@ const Login = () => {
 
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      window.location.href = "https://academicpal.vercel.app/"; 
+      window.location.href = "https://academicpal.vercel.app/";
     } catch (error: unknown) {
       if (error instanceof Error) {
         if (error.message.includes("wrong-password") || error.message.includes("user-not-found")) {
           setError("Incorrect credentials. Please sign up if you don't have an account.");
         } else {
-          setError(error.message); 
+          setError(error.message);
         }
       } else {
         setError("An unknown error occurred");
@@ -76,14 +103,13 @@ const Login = () => {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-black text-white p-6" style={{ fontFamily: "'Poppins', sans-serif" }}>
-      
       <div className="text-center mb-6">
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold">
           Welcome to{" "}
           <span className="text-yellow-400">
             <Typewriter
               words={["📖 Academic Pal", "🎓 Your Learning Companion", "💡 A Smarter Future"]}
-              loop={0} 
+              loop={0}
               cursor
               cursorStyle="|"
               typeSpeed={80}
@@ -123,6 +149,7 @@ const Login = () => {
         </div>
 
         {error && <p className="text-red-500 text-center text-sm sm:text-base md:text-lg mb-4">{error}</p>}
+        {message && <p className="text-green-500 text-center text-sm sm:text-base md:text-lg mb-4">{message}</p>}
 
         <button
           type="submit"
@@ -132,24 +159,32 @@ const Login = () => {
         </button>
       </form>
 
-      <div className="mt-4 w-full flex justify-center">
+      <div className="mt-4  flex justify-center">
         <button
           onClick={handleGoogleSignIn}
-          className="flex items-center gap-2 bg-gradient-to-r from-red-500 to-yellow-500 text-white py-3 px-6 rounded-lg text-sm sm:text-base md:text-lg font-semibold hover:from-red-400 hover:to-yellow-400 shadow-md hover:shadow-lg transform hover:scale-105 transition-all duration-300 ease-in-out"
+          className="flex items-center gap-2 bg-gradient-to-r from-red-500 to-yellow-500 text-white py-3 px-20 rounded-lg text-sm sm:text-base md:text-lg font-semibold hover:from-red-400 hover:to-yellow-400 shadow-md hover:shadow-lg transform hover:scale-105 transition-all duration-300 ease-in-out"
         >
           <FaGoogle className="text-lg sm:text-xl md:text-2xl" />
           <span className="text-sm sm:text-base md:text-lg font-semibold">Sign in with Google</span>
         </button>
       </div>
 
-      {/* GitHub Login Button */}
-      <div className="mt-4 w-full flex justify-center">
+      <div className="mt-4  flex justify-center">
         <button
           onClick={handleGithubSignIn}
-          className="flex items-center gap-2 bg-gradient-to-r from-gray-700 to-gray-900 text-white py-3 px-6 rounded-lg text-sm sm:text-base md:text-lg font-semibold hover:from-gray-600 hover:to-gray-800 shadow-md hover:shadow-lg transform hover:scale-105 transition-all duration-300 ease-in-out"
+          className="flex items-center gap-2 bg-gradient-to-r from-gray-800 to-black text-white py-3 px-20 rounded-lg text-sm sm:text-base md:text-lg font-semibold hover:from-gray-700 hover:to-gray-600 shadow-md hover:shadow-lg transform hover:scale-105 transition-all duration-300 ease-in-out"
         >
           <FaGithub className="text-lg sm:text-xl md:text-2xl" />
           <span className="text-sm sm:text-base md:text-lg font-semibold">Sign in with GitHub</span>
+        </button>
+      </div>
+
+      <div className="mt-4 w-full flex justify-center">
+        <button
+          onClick={handleForgotPassword}
+          className="text-blue-500 underline text-sm sm:text-base md:text-lg"
+        >
+          Forgot Password?
         </button>
       </div>
 

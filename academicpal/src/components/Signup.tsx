@@ -163,7 +163,7 @@ const SignUp = () => {
 
         <button
           type="submit"
-          className="bg-gradient-to-r from-green-400 via-blue-500 to-purple-500 text-white p-3 rounded-lg text-sm sm:text-base font-semibold hover:from-green-300 hover:to-purple-400 shadow-lg hover:shadow-xl transform hover:scale-105"
+          className="bg-gradient-to-r from-green-400 via-blue-500 to-purple-500 text-white py-3 px-20 rounded-lg text-sm sm:text-base font-semibold hover:from-green-300 hover:to-purple-400 shadow-lg hover:shadow-xl transform hover:scale-105"
         >
           Sign Up
         </button>
@@ -172,10 +172,10 @@ const SignUp = () => {
       <div className="mt-4 text-sm sm:text-base text-center">
 
          {/* Google Sign-Up Button */}
-      <div className="mt-4 w-full flex justify-center">
+      <div className="mt-4  flex justify-center">
         <button
           onClick={handleGoogleSignUp}
-          className="flex items-center gap-2 bg-gradient-to-r from-red-500 to-yellow-500 text-white py-3 px-6 rounded-lg text-base sm:text-lg md:text-xl font-semibold hover:from-red-400 hover:to-yellow-400 shadow-md hover:shadow-lg transform hover:scale-105 transition-all duration-300"
+          className="flex items-center gap-2 bg-gradient-to-r from-red-500 to-yellow-500 text-white py-3 px-20 rounded-lg text-base sm:text-lg md:text-xl font-semibold hover:from-red-400 hover:to-yellow-400 shadow-md hover:shadow-lg transform hover:scale-105 transition-all duration-300"
         >
           <FaGoogle className="text-xl sm:text-2xl" />
           <span>Sign Up with Google</span>
@@ -183,10 +183,10 @@ const SignUp = () => {
       </div>
 
       {/* GitHub Sign-Up Button */}
-      <div className="mt-4 w-full flex justify-center">
+      <div className="mt-4  flex justify-center">
         <button
           onClick={handleGitHubSignUp}
-          className="flex items-center gap-2 bg-gradient-to-r from-gray-700 to-gray-900 text-white py-3 px-6 rounded-lg text-base sm:text-lg md:text-xl font-semibold hover:from-gray-600 hover:to-gray-800 shadow-md hover:shadow-lg transform hover:scale-105 transition-all duration-300"
+          className="flex items-center gap-2 bg-gradient-to-r from-gray-700 to-gray-900 text-white py-3 px-20 rounded-lg text-base sm:text-lg md:text-xl font-semibold hover:from-gray-600 hover:to-gray-800 shadow-md hover:shadow-lg transform hover:scale-105 transition-all duration-300"
         >
           <FaGithub className="text-xl sm:text-2xl" />
           <span>Sign Up with GitHub</span>
