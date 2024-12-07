@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, GithubAuthProvider } from "firebase/auth";
 import { auth } from "../firebase";
-import { FaGoogle, FaUser, FaEnvelope, FaLock } from "react-icons/fa";
+import { FaGoogle, FaGithub, FaUser, FaEnvelope, FaLock } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { Typewriter } from "react-simple-typewriter";
 
@@ -18,6 +18,23 @@ const SignUp = () => {
       const result = await signInWithPopup(auth, provider);
       const user = result.user;
       console.log("Google User:", user);
+      window.location.href = "https://academicpal.vercel.app/";
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        setError(error.message);
+      } else {
+        setError("An unknown error occurred");
+      }
+    }
+  };
+
+  // GitHub Sign-Up Handler
+  const handleGitHubSignUp = async () => {
+    const provider = new GithubAuthProvider();
+    try {
+      const result = await signInWithPopup(auth, provider);
+      const user = result.user;
+      console.log("GitHub User:", user);
       window.location.href = "https://academicpal.vercel.app/";
     } catch (error: unknown) {
       if (error instanceof Error) {
@@ -162,6 +179,17 @@ const SignUp = () => {
         >
           <FaGoogle className="text-xl sm:text-2xl" />
           <span>Sign Up with Google</span>
+        </button>
+      </div>
+
+      {/* GitHub Sign-Up Button */}
+      <div className="mt-4 w-full flex justify-center">
+        <button
+          onClick={handleGitHubSignUp}
+          className="flex items-center gap-2 bg-gradient-to-r from-gray-700 to-gray-900 text-white py-3 px-6 rounded-lg text-base sm:text-lg md:text-xl font-semibold hover:from-gray-600 hover:to-gray-800 shadow-md hover:shadow-lg transform hover:scale-105 transition-all duration-300"
+        >
+          <FaGithub className="text-xl sm:text-2xl" />
+          <span>Sign Up with GitHub</span>
         </button>
       </div>
 
