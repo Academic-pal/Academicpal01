@@ -59,7 +59,7 @@ const Footer: React.FC = () => {
                 </a>
               </li>
               <li className="hover:text-yellow-300">
-                <a href="https://is-cod.in/services" target="_blank" rel="noopener noreferrer">
+                <a href="https://register.is-cod.in/" target="_blank" rel="noopener noreferrer">
                   Domain Services
                 </a>
               </li>
