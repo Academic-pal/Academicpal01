@@ -1,7 +1,7 @@
 import React from "react";
 import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
 import { RiCodeLine } from "react-icons/ri";
-import { Link } from "react-router-dom"; 
+import { Link } from "react-router-dom";
 
 const Footer: React.FC = () => {
   return (
@@ -17,7 +17,6 @@ const Footer: React.FC = () => {
             </p>
           </div>
 
-    
           <div className="grid grid-cols-2 gap-6 text-sm text-gray-400">
             <div>
               <h2 className="text-yellow-400 font-semibold mb-2">Resources</h2>
@@ -32,7 +31,7 @@ const Footer: React.FC = () => {
                   </a>
                 </li>
                 <li className="hover:text-yellow-300">
-                  <Link to="/privacy-policy">Privacy Policy</Link> 
+                  <Link to="/privacy-policy">Privacy Policy</Link>
                 </li>
               </ul>
             </div>
@@ -51,7 +50,22 @@ const Footer: React.FC = () => {
             </div>
           </div>
 
-         
+          <div className="grid grid-cols-1 gap-4 text-sm text-gray-400">
+            <h2 className="text-yellow-400 font-semibold mb-2">Partner</h2>
+            <ul>
+              <li className="hover:text-yellow-300">
+                <a href="https://is-cod.in" target="_blank" rel="noopener noreferrer">
+                  Partner with IS-COD.IN
+                </a>
+              </li>
+              <li className="hover:text-yellow-300">
+                <a href="https://is-cod.in/services" target="_blank" rel="noopener noreferrer">
+                  Domain Services
+                </a>
+              </li>
+            </ul>
+          </div>
+
           <div className="flex items-center gap-8">
             <a
               href="https://github.com/Academic-pal"
@@ -81,7 +95,6 @@ const Footer: React.FC = () => {
           </div>
         </div>
 
-      
         <hr className="my-8 border-gray-700" />
 
         {/* Bottom Section */}
