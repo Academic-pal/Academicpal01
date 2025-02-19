@@ -4,6 +4,7 @@ import { auth } from "../firebase";
 import { FaGoogle, FaGithub, FaUser, FaEnvelope, FaLock } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { Typewriter } from "react-simple-typewriter";
+import image from "../assets/image1.png";//academicpal/src/assets/image1.png
 
 const SignUp = () => {
   const [name, setName] = useState<string>("");
@@ -67,143 +68,163 @@ const SignUp = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-black text-white p-6">
-      {/* Typewriter Effect */}
-      <div className="text-center mb-6">
-        <h1 className="text-3xl sm:text-4xl md:text-5xl  font-bold">
-          Join{" "}
-          <span className="text-yellow-400">
-            <Typewriter
-              words={["Academic Pal", "Your Learning Companion", "A Smarter Future"]}
-              loop={0}
-              cursor
-              cursorStyle="|"
-              typeSpeed={80}
-              deleteSpeed={50}
-              delaySpeed={1000}
-            />
-          </span>
-        </h1>
-        <p className="mt-2 text-base sm:text-lg md:text-xl text-gray-400">
-          Sign up to access personalized academic tools and resources.
-        </p>
-      </div>
-
-      {/* Sign-Up Form */}
-      <form onSubmit={handleSignUp} className="w-full sm:w-3/4 md:w-1/3 lg:w-1/4 flex flex-col gap-4">
-        <label htmlFor="name" className="text-sm sm:text-base font-semibold">
+    <div className="flex flex-col md:flex-row items-center justify-center min-h-screen bg-black text-white p-6">
+      {/* Sign-Up Section */}
+      <div className="md:w-1/2 flex flex-col items-center">
+        <div className="text-center mb-6">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold">
+            Join
+            <span className="text-yellow-400">
+              <Typewriter
+                words={["Academic Pal", "Your Learning Companion", "A Smarter Future"]}
+                loop={0}
+                cursor
+                cursorStyle="|"
+                typeSpeed={80}
+                deleteSpeed={50}
+                delaySpeed={1000}
+              />
+            </span>
+          </h1>
+          <p className="mt-2 text-base sm:text-lg md:text-xl text-gray-400">
+            Sign up to access personalized academic tools and resources.
+          </p>
+        </div>
+  
+        <form onSubmit={handleSignUp} className="w-full sm:w-3/4 md:w-2/3 lg:w-1/1 flex flex-col gap-6 bg-gray-900 p-8 rounded-xl shadow-2xl">
+      {/* Full Name Input */}
+      <div className="space-y-2">
+        <label htmlFor="name" className="text-sm sm:text-base font-semibold text-gray-00">
           Full Name:
         </label>
-        <div className="flex items-center bg-gray-800 p-3 rounded-md">
-          <FaUser className="text-white mr-3" />
+        <div className="flex items-center bg-gray-800 p-3 rounded-lg border border-gray-700 hover:border-gray-600 transition-all">
+          <FaUser className="text-gray-400 mr-3" />
           <input
             id="name"
             type="text"
             placeholder="Enter your full name"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="w-full bg-gray-800 text-white border-none outline-none text-sm sm:text-base"
+            className="w-full bg-transparent text-white placeholder-gray-500 outline-none text-sm sm:text-base"
             required
           />
         </div>
+      </div>
 
-        {/* USN Input */}
-        <label htmlFor="usn" className="text-sm sm:text-base font-semibold">
+      {/* USN Input */}
+      <div className="space-y-2">
+        <label htmlFor="usn" className="text-sm sm:text-base font-semibold text-gray-300">
           USN:
         </label>
-        <div className="flex items-center bg-gray-800 p-3 rounded-md">
-          <FaUser className="text-white mr-3" />
+        <div className="flex items-center bg-gray-800 p-3 rounded-lg border border-gray-700 hover:border-gray-600 transition-all">
+          <FaUser className="text-gray-400 mr-3" />
           <input
             id="usn"
             type="text"
             placeholder="Enter your USN"
             value={usn}
             onChange={(e) => setUsn(e.target.value)}
-            className="w-full bg-gray-800 text-white border-none outline-none text-sm sm:text-base"
+            className="w-full bg-transparent text-white placeholder-gray-500 outline-none text-sm sm:text-base"
             required
           />
         </div>
+      </div>
 
-        {/* Email Input */}
-        <label htmlFor="email" className="text-sm sm:text-base font-semibold">
+      {/* Email Input */}
+      <div className="space-y-2">
+        <label htmlFor="email" className="text-sm sm:text-base font-semibold text-gray-300">
           Email Address:
         </label>
-        <div className="flex items-center bg-gray-800 p-3 rounded-md">
-          <FaEnvelope className="text-white mr-3" />
+        <div className="flex items-center bg-gray-800 p-3 rounded-lg border border-gray-700 hover:border-gray-600 transition-all">
+          <FaEnvelope className="text-gray-400 mr-3" />
           <input
             id="email"
             type="email"
             placeholder="Enter your email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full bg-gray-800 text-white border-none outline-none text-sm sm:text-base"
+            className="w-full bg-transparent text-white placeholder-gray-500 outline-none text-sm sm:text-base"
             required
           />
         </div>
+      </div>
 
-        {/* Password Input */}
-        <label htmlFor="password" className="text-sm sm:text-base font-semibold">
+      {/* Password Input */}
+      <div className="space-y-2">
+        <label htmlFor="password" className="text-sm sm:text-base font-semibold text-gray-300">
           Password:
         </label>
-        <div className="flex items-center bg-gray-800 p-3 rounded-md">
-          <FaLock className="text-white mr-3" />
+        <div className="flex items-center bg-gray-800 p-3 rounded-lg border border-gray-700 hover:border-gray-600 transition-all">
+          <FaLock className="text-gray-400 mr-3" />
           <input
             id="password"
             type="password"
             placeholder="Enter your password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="w-full bg-gray-800 text-white border-none outline-none text-sm sm:text-base"
+            className="w-full bg-transparent text-white placeholder-gray-500 outline-none text-sm sm:text-base"
             required
           />
         </div>
-
-        {/* Error Message */}
-        {error && <p className="text-red-500 text-center text-sm sm:text-base">{error}</p>}
-
-        <button
-          type="submit"
-          className="bg-gradient-to-r from-green-400 via-blue-500 to-purple-500 text-white py-3 px-20 rounded-lg text-sm sm:text-base font-semibold hover:from-green-300 hover:to-purple-400 shadow-lg hover:shadow-xl transform hover:scale-105"
-        >
-          Sign Up
-        </button>
-      </form>
-
-      <div className="mt-4 text-sm sm:text-base text-center">
-
-         {/* Google Sign-Up Button */}
-      <div className="mt-4  flex justify-center">
-        <button
-          onClick={handleGoogleSignUp}
-          className="flex items-center gap-2 bg-gradient-to-r from-red-500 to-yellow-500 text-white py-3 px-20 rounded-lg text-base sm:text-lg md:text-xl font-semibold hover:from-red-400 hover:to-yellow-400 shadow-md hover:shadow-lg transform hover:scale-105 transition-all duration-300"
-        >
-          <FaGoogle className="text-xl sm:text-2xl" />
-          <span>Sign Up with Google</span>
-        </button>
       </div>
 
-      {/* GitHub Sign-Up Button */}
-      <div className="mt-4  flex justify-center">
-        <button
-          onClick={handleGitHubSignUp}
-          className="flex items-center gap-2 bg-gradient-to-r from-gray-700 to-gray-900 text-white py-3 px-20 rounded-lg text-base sm:text-lg md:text-xl font-semibold hover:from-gray-600 hover:to-gray-800 shadow-md hover:shadow-lg transform hover:scale-105 transition-all duration-300"
-        >
-          <FaGithub className="text-xl sm:text-2xl" />
-          <span>Sign Up with GitHub</span>
-        </button>
-      </div>
-
-      {/* Switch to Login */}
-      <div className="mt-4 text-center"></div>
-        <p>
-          Already have an account?{" "}
-          <Link to="/login" className="text-yellow-500 font-semibold hover:underline">
-            Login
-          </Link>
+      {/* Error Message */}
+      {error && (
+        <p className="text-red-500 text-center text-sm sm:text-base animate-pulse">
+          {error}
         </p>
+      )}
+
+      {/* Sign Up Button */}
+      <button
+        type="submit"
+        className="bg-gradient-to-r from-green-400 via-blue-500 to-purple-500 text-white py-3 rounded-lg text-sm sm:text-base font-semibold hover:from-green-300 hover:to-purple-400 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+      >
+        Sign Up
+      </button>
+    </form>
+  
+        {/* Social Sign-Up Buttons */}
+        <div className="mt-6 space-y-4 w-full sm:w-3/4 md:w-2/3 lg:w-1/1">
+          <button
+            onClick={handleGoogleSignUp}
+            className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-red-500 to-yellow-500 text-white py-3 rounded-lg text-base sm:text-lg font-semibold hover:from-red-400 hover:to-yellow-400 shadow-md hover:shadow-lg transform hover:scale-105 transition-all duration-300"
+          >
+            <FaGoogle className="text-xl" />
+            <span>Sign Up with Google</span>
+          </button>
+          <button
+            onClick={handleGitHubSignUp}
+            className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-gray-700 to-gray-900 text-white py-3 rounded-lg text-base sm:text-lg font-semibold hover:from-gray-600 hover:to-gray-800 shadow-md hover:shadow-lg transform hover:scale-105 transition-all duration-300"
+          >
+            <FaGithub className="text-xl" />
+            <span>Sign Up with GitHub</span>
+          </button>
+        </div>
+  
+        {/* Login Link */}
+        <div className="mt-6 text-center">
+          <p className="text-sm sm:text-base text-gray-400">
+            Already have an account?{" "}
+            <Link
+              to="/login"
+              className="text-yellow-500 font-semibold hover:underline hover:text-yellow-400 transition-all"
+            >
+              Login
+            </Link>
+          </p>
+        </div>
+      </div>
+  
+      {/* Image Section */}
+      <div className="hidden md:flex w-1/0 justify-center">
+        <img
+          src={image}
+          alt="Professional Sign Up Illustration"
+          className="w-full max-w-md md:max-w-lg lg:max-w-xl rounded-lg shadow-lg transform hover:scale-105 transition duration-300"
+        />
       </div>
     </div>
   );
 };
-
 export default SignUp;
