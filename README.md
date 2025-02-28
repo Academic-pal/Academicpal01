@@ -13,7 +13,7 @@ Welcome to **AcademicPal**, your ultimate learning companion designed for colleg
 - ❓ **Important Questions**: Get a list of essential questions to focus your studies.
 - 📄 **Detailed Syllabus**: Never miss a topic with a detailed syllabus for each course.
 - 🔍 **Extensive Question Banks**: A rich collection of questions for deep practice.
-- 🎓 **Branch-Wise Resources**: Explore tailored content for branches like AI, CSE, Mechanical, and more.
+- 🎓 **Branch-Wise Resources**: Explore tailored content for branches like AI, CSE, Mechanical, and more.///////
 
 ---
 
